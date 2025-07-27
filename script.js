@@ -54,6 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     pixCodeOutput.style.display = 'block';
+
+    pixCodeTextarea.scrollIntoView({ behavior: 'smooth' });
   });
 
   // Limpar campos

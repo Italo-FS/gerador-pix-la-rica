@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Chave PIX - La Rica Pizzaria</title>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="header">
+        <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 772.04 741.59" width="90" height="90">
+          <path fill="#fff" d="M677.67,390.49l-56.48-66.25-54.65,46.56-36.43-128.92,14.3-107.43-115.67-116.39L306.02,1.94l55.59,112.81-68.97,87.74v37.6l-63.67,118.18-41.37-37.6,27.66-127.13-84.14,84.16-34.61,216.67,60.12,125.33,258.7,119.97,189.47-69.83,98.38-105.64-25.5-173.69ZM511.82,220.28l14.76,192.47h-46.01l-6.03-78.71h-33.19l-6.04,78.71h-46.01l14.77-192.47h107.75ZM317.19,220.28h79.24l-19.47,200.65h150.82l5.97,77.78h-242.01l25.45-278.42ZM418.8,527.71l-2.45,1.93,1.82-3.57.63,1.64ZM392.07,527.22l3.21-5.96v-1.9l3.48-4.43-2.8-5.69,6.19.81,5.84,5.88-.72,5.42,1.84,6.5,2.76-2.35,2.85,3.34,1.29,8.76-4.97,5.33-9.55,3.52-13.06-6.05-3.03-6.33,1.75-10.93,4.24-4.24-1.39,6.41,2.08,1.9ZM393.68,513.17h1.78l.97,2.93-2.75-2.93ZM408.97,517.05l1.42-4.82,2.89.89-4.31,3.93ZM385.04,529.82l-3.86-1.97,3.31-1.53.56,3.5ZM341.71,635.19l-3.95-51.51h-21.72l-3.95,51.51h-30.1l9.66-125.95h70.51l3.58,46.64-11.29,6.4-13.36,7.57,26.74,15.14,4.01,50.2h-30.11ZM377.17,634.91l7.72-83.57h30.1l7.82,83.84-45.65-.27ZM428.63,635.19l9.67-125.95h96.29l4.83,49.43h-30.1l-1.95-19.89h-41.24l-5.13,66.86h51.61l-.77-14.32h30.1l2.36,43.87h-115.67ZM507.36,599.84h-13.65l-1.8-23.36h-9.85l-1.79,23.36h-13.65l4.38-57.13h31.98l4.39,57.13Z" />
+          <polygon fill="#fff" points="564.06 156.63 592.33 61.02 649.54 78.71 564.06 156.63" />
+          <polygon fill="#fff" points="315.56 137.88 260.98 79.77 296.22 79.77 315.56 137.88" />
+          <polygon fill="#fff" points="13.19 370.65 89.68 409.81 78.74 340.34 13.19 370.65" />
+          <polygon fill="#fff" points="710.35 406.14 746.42 335.45 758.85 367.85 710.35 406.14" />
+          <polygon fill="#fff" points="471.08 288.89 444.81 288.89 446.61 265.42 469.28 265.42 471.08 288.89" />
+          <polygon fill="#fff" points="490.89 563.08 483.09 563.08 483.63 556.12 490.36 556.12 490.89 563.08" />
+          <polygon fill="#fff" points="335.5 554.14 318.31 554.14 319.49 538.78 334.32 538.78 335.5 554.14" />
+        </svg>
+        <div class="main-title">
+          <h1>La Rica</h1>
+          <div class="subtitle">Gerador de Chave PIX</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="form-section">
+        <h2>Informe os dados do pagamento</h2>
+        <div class="form-group">
+          <label for="valor">Valor (R$)</label>
+          <div class="currency-input">
+            <input type="number" id="valor" min="0.01" step="0.01" placeholder="0.00" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="identificador">Identificador (opcional)</label>
+          <input type="text" id="identificador" maxlength="20" placeholder="Ex: Pedido123">
+          <div class="hint">Máx. 20 caracteres (letras e números)</div>
+        </div>
+
+        <button id="gerarBtn">Gerar Chave PIX</button>
+        <button id="limparBtn" class="secondary-btn">Limpar Campos</button>
+
+        <div class="instructions">
+          <h3>Como usar:</h3>
+          <ol>
+            <li>Informe o valor do pagamento</li>
+            <li>Opcionalmente, adicione um identificador (ex: número do pedido)</li>
+            <li>Clique em "Gerar Chave PIX"</li>
+            <li>Use o QR Code ou copie o código para pagamento</li>
+            <li>O pagamento será creditado para La Rica Pizzaria</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="result-section">
+        <div id="pixCodeOutput" style="display: none;">
+          <h2>Chave PIX Gerada</h2>
+          <div class="qr-container">
+            <div id="qrcode"></div>
+          </div>
+
+          <div class="pix-code-container">
+            <div class="pix-code-label">Código PIX:</div>
+            <textarea id="pixCode" readonly></textarea>
+            <div class="copy-btn-container">
+              <button id="copiarBtn" class="secondary-btn">Copiar Código</button>
+              <button id="baixarBtn" class="secondary-btn">Baixar QR Code</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>La Rica Pizzaria &copy; 2025</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

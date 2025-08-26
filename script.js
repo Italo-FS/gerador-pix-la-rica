@@ -1,4 +1,4 @@
-const PIX_KEY = "9fe078bf-320d-482c-9f88-b069bf2abeb6";
+const PIX_KEY = "329bced2-d5a3-4a77-80ff-1ab135c5948a";
 const MERCHANT_NAME = "LA RICA";
 const MERCHANT_CITY = "FORTALEZA";
 
